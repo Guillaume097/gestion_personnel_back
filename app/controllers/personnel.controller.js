@@ -68,7 +68,15 @@ exports.findPersonnel = (req, res) => {
 // Update d'une categorie //
 
 exports.update = (req, res) => {
-    Personnel.updateOne(req.params.personnelID)
+    Personnel.findByIdAndUpdate(req.params.personnelID,{
+
+        num_employe: req.body.num_employe,
+        nom: req.body.nom,
+        prenom: req.body.prenom,
+        age: req.body.age,
+        num_tel: req.body.num_tel,
+
+    })
         .then(personnel => {
             if (!personnel) {
                 return res.status(404).send({
@@ -92,7 +100,7 @@ exports.update = (req, res) => {
 // Supprime une categorie avec l'id specifié //
 
 exports.delete = (req, res) => {
-    Personnel.deleteOne(req.params.personnelID)
+    Personnel.findByIdAndDelete(req.params.personnelID)
         .then(personnel => {
             if (!personnel) {
                 return res.status(404).send({

@@ -12,10 +12,10 @@ module.exports = (app) => {
 
 
      // Route de test pour un create // 
-     app.get('/api/horaire/create', horaire.create);
+     app.post('/api/horaire/create', horaire.create);
 
      // Route de test pour un delete // 
-     app.get('/api/horaire/delete/:horaireID', horaire.delete);
+     app.post('/api/horaire/delete/:horaireID', horaire.delete);
 
 
      // Route de test pour un update // 

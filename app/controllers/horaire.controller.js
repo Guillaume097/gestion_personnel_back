@@ -8,10 +8,10 @@ exports.create = (req, res) => {
     const horaire = new Horaire({
 
         num_employe: req.body.num_employe,
-        name_employe: req.body.name_employe,
-        prenom_employe: req.body.prenom_employe,
-        date_debut: req.body.date_debut,
-        date_fin: req.body.date_fin,
+        horaire_debut: req.body.horaire_debut,
+        horaire_fin: req.body.horaire_fin,
+        debut_pause: req.body.debut_pause,
+        fin_pause: req.body.fin_pause,
 
     });
 
@@ -29,8 +29,8 @@ exports.create = (req, res) => {
 // Recupere et montre toutes les horaireID de la BDD // 
 exports.findAll = (req, res) => {
     Horaire.find()
-        .then(horaires => {
-            res.send(horaires);
+        .then(horaire => {
+            res.send(horaire);
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving 'horaire'."
@@ -65,17 +65,27 @@ exports.findhoraireid = (req, res) => {
 
 };
 
+
 // Update d'une categorie //
 
 exports.update = (req, res) => {
-    Horaire.updateOne(req.params.horaireID)
-        .then(horaire => {
-            if (!horaire) {
+    Horaire.findByIdAndUpdate(req.params.horaireID, {
+
+        num_employe: req.body.num_employe,
+        horaire_debut: req.body.horaire_debut,
+        horaire_fin: req.body.horaire_fin,
+        debut_pause: req.body.debut_pause,
+        fin_pause: req.body.fin_pause,
+
+        }
+    )
+        .then(Horaire => {
+            if (!Horaire) {
                 return res.status(404).send({
                     message: "produits not found with id " + req.params.horaireID
                 });
             }
-            res.send(horaire);
+            res.send(Horaire);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
@@ -92,9 +102,9 @@ exports.update = (req, res) => {
 // Supprime une categorie avec l'id specifié //
 
 exports.delete = (req, res) => {
-    Horaire.deleteOne(req.params.horaireID)
-        .then(horaire => {
-            if (!horaire) {
+    Horaire.deleteOne({"num_employe":req.params.horaireID})
+        .then(Horaire => {
+            if (!Horaire) {
                 return res.status(404).send({
                     message: "Sous categorie non trouvé avec cet ID" + req.params.horaireID
                 });

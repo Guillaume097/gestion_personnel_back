@@ -15,11 +15,11 @@ module.exports = (app) => {
 
 
     // Route de test pour un delete // 
-    app.post('/api/personnel/delete', personnel.delete);
+    app.post('/api/personneldelete/:personnelID', personnel.delete);
 
 
     // Route de test pour un update // 
-    app.get('/api/personnel/update', personnel.update);
+    app.get('/api/personnelupdate/:personnelID', personnel.update);
 
 
 
