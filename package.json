@@ -1,0 +1,19 @@
+{
+  "name": "gestion_personnel_back",
+  "version": "1.0.0",
+  "description": "Back de l'application pour la gestion du personnel ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guillaume097/gestion_personnel_back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guillaume097/gestion_personnel_back/issues"
+  },
+  "homepage": "https://github.com/Guillaume097/gestion_personnel_back#readme"
+}
