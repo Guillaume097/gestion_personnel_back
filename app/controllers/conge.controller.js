@@ -55,11 +55,11 @@ exports.findConge = (req, res) => {
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
-                    message: "Conge not found with id " + req.params.Congeid
+                    message: "conge not found with id " + req.params.Congeid
                 });
             }
             return res.status(500).send({
-                message: "Error retrieving note with id " + req.params.Congeid
+                message: "conge retrieving note with id " + req.params.Congeid
             });
         });
 
