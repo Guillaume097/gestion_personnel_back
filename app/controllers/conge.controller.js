@@ -1,7 +1,7 @@
 const Conge = require('../models/conge.model.js');
 
 
-// Create and Save a new Note
+// Create and Save
 exports.create = (req, res) => {
 
     // creation d'une categorie //
@@ -15,13 +15,13 @@ exports.create = (req, res) => {
 
     });
 
-    // Save Note in the database
+    // Save conge dans la BDD
     conge.save()
         .then(data => {
             res.send(data);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the 'conge'."
+                message: err.message || "Some error occurred while creating 'conge'."
             });
         });
 }
@@ -55,7 +55,7 @@ exports.findConge = (req, res) => {
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
-                    message: "Note not found with id " + req.params.Congeid
+                    message: "Conge not found with id " + req.params.Congeid
                 });
             }
             return res.status(500).send({
